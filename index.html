@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VoiceWall - å£ã³ãã®åã§å£²ä¸ãä¼¸ã°ãAIåæSaaS</title>
+<meta name="description" content="å£ã³ããèªååéã»AIåæãææåæãè¿ä¿¡ãã³ãã¬ã¼ãçæãå°å¥äºä¾å¤æãæé¡1,980åããã">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#2563eb;--primary-dark:#1d4ed8;--accent:#7c3aed;--dark:#0f172a;--gray:#64748b;--light:#f8fafc;--success:#10b981;--warning:#f59e0b}
+body{font-family:'Noto Sans JP','Inter',sans-serif;color:var(--dark);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{text-decoration:none}
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;padding:16px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1080px;margin:0 auto;padding:0 24px}
+.logo{font-size:1.4rem;font-weight:800;color:var(--dark)}
+.logo span{color:var(--primary)}
+.nav-cta{padding:10px 24px;background:var(--primary);color:#fff;border-radius:8px;font-weight:600;font-size:0.9rem;transition:all .2s}
+.nav-cta:hover{background:var(--primary-dark);color:#fff}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#eff6ff 0%,#f5f3ff 50%,#fdf2f8 100%);padding-top:80px}
+.hero-content{text-align:center;max-width:760px;margin:0 auto}
+.hero-badge{display:inline-block;padding:6px 16px;background:#ede9fe;color:var(--accent);border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.hero h1{font-size:2.8rem;font-weight:800;line-height:1.3;letter-spacing:-0.02em}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.15rem;color:var(--gray);margin-top:20px;max-width:600px;margin-left:auto;margin-right:auto}
+.hero-buttons{display:flex;gap:16px;justify-content:center;margin-top:36px;flex-wrap:wrap}
+.btn-primary{padding:16px 36px;background:var(--primary);color:#fff;border-radius:12px;font-weight:700;font-size:1.05rem;transition:all .2s;box-shadow:0 4px 14px rgba(37,99,235,0.3)}
+.btn-primary:hover{background:var(--primary-dark);color:#fff;transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,0.4)}
+.btn-secondary{padding:16px 36px;background:#fff;color:var(--dark);border:2px solid #e2e8f0;border-radius:12px;font-weight:600;font-size:1.05rem;transition:all .2s}
+.btn-secondary:hover{border-color:var(--primary);color:var(--primary)}
+.hero-stats{display:flex;gap:48px;justify-content:center;margin-top:48px}
+.stat{text-align:center}
+.stat-num{font-size:2rem;font-weight:800;color:var(--primary)}
+.stat-label{font-size:0.85rem;color:var(--gray);margin-top:4px}
+
+/* Section */
+section{padding:80px 0}
+.section-title{font-size:2rem;font-weight:800;text-align:center;margin-bottom:12px}
+.section-sub{text-align:center;color:var(--gray);margin-bottom:48px;font-size:1.05rem}
+
+/* Pain */
+.pain{background:var(--light)}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.pain-card{background:#fff;border-radius:16px;padding:32px;border:1px solid #e2e8f0}
+.pain-icon{font-size:2rem;margin-bottom:12px}
+.pain-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.pain-card p{color:var(--gray);font-size:0.95rem}
+
+/* Features */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
+.feature-card{background:#fff;border-radius:16px;padding:36px;border:1px solid #e2e8f0;transition:all .2s}
+.feature-card:hover{box-shadow:0 8px 30px rgba(0,0,0,0.08);transform:translateY(-4px)}
+.feature-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;font-weight:700;font-size:0.9rem;margin-bottom:16px}
+.feature-card h3{font-size:1.15rem;font-weight:700;margin-bottom:8px}
+.feature-card p{color:var(--gray);font-size:0.95rem}
+.feature-tag{display:inline-block;padding:4px 10px;border-radius:6px;font-size:0.75rem;font-weight:600;margin-top:12px}
+.tag-gemini{background:#e0f2fe;color:#0284c7}
+.tag-gpt{background:#ecfdf5;color:#059669}
+
+/* Pricing */
+.pricing{background:var(--light)}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;max-width:760px;margin:0 auto}
+.price-card{background:#fff;border-radius:20px;padding:40px;border:2px solid #e2e8f0;text-align:center;position:relative;transition:all .2s}
+.price-card.popular{border-color:var(--primary);box-shadow:0 8px 30px rgba(37,99,235,0.15)}
+.popular-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:6px 20px;background:var(--primary);color:#fff;border-radius:20px;font-size:0.8rem;font-weight:700}
+.price-name{font-size:1.2rem;font-weight:700;margin-bottom:8px}
+.price-amount{font-size:3rem;font-weight:800;color:var(--dark)}
+.price-amount span{font-size:1rem;font-weight:500;color:var(--gray)}
+.price-desc{color:var(--gray);margin:12px 0 24px;font-size:0.95rem}
+.price-features{text-align:left;margin-bottom:32px}
+.price-features li{list-style:none;padding:8px 0;font-size:0.95rem;display:flex;align-items:center;gap:8px}
+.price-features li::before{content:"â";color:var(--success);font-weight:700}
+.price-btn{display:block;width:100%;padding:16px;border-radius:12px;font-weight:700;font-size:1.05rem;text-align:center;transition:all .2s}
+.price-btn-primary{background:var(--primary);color:#fff;box-shadow:0 4px 14px rgba(37,99,235,0.3)}
+.price-btn-primary:hover{background:var(--primary-dark);color:#fff;transform:translateY(-2px)}
+.price-btn-outline{background:#fff;color:var(--primary);border:2px solid var(--primary)}
+.price-btn-outline:hover{background:var(--primary);color:#fff}
+
+/* How */
+.how-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;text-align:center}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--light);border:2px solid var(--primary);color:var(--primary);font-weight:800;font-size:1.2rem;margin-bottom:16px}
+.how-steps h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.how-steps p{color:var(--gray);font-size:0.9rem}
+
+/* FAQ */
+.faq-list{max-width:700px;margin:0 auto}
+.faq-item{border-bottom:1px solid #e2e8f0;padding:20px 0}
+.faq-q{font-weight:700;font-size:1.05rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-a{color:var(--gray);margin-top:12px;font-size:0.95rem;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-arrow{transition:transform .2s;color:var(--gray)}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;text-align:center;padding:80px 0}
+.cta-section h2{font-size:2rem;font-weight:800;margin-bottom:12px}
+.cta-section p{opacity:0.9;margin-bottom:32px;font-size:1.05rem}
+.btn-white{display:inline-block;padding:16px 40px;background:#fff;color:var(--primary);border-radius:12px;font-weight:700;font-size:1.1rem;transition:all .2s;box-shadow:0 4px 14px rgba(0,0,0,0.15)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.2)}
+
+/* Footer */
+footer{background:var(--dark);color:#94a3b8;padding:40px 0;text-align:center;font-size:0.85rem}
+footer a{color:#cbd5e1}
+
+@media(max-width:768px){
+  .hero h1{font-size:1.8rem}
+  .hero-stats{gap:24px}
+  .stat-num{font-size:1.5rem}
+  .pricing-grid{grid-template-columns:1fr}
+  .hero-buttons{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Voice<span>Wall</span></div>
+    <a href="#pricing" class="nav-cta">æéãã©ã³ãè¦ã</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">ð AIå£ã³ãåæSaaS</div>
+      <h1>å£ã³ãã<em>å£²ä¸ã«å¤ãã</em><br>AIåæãã©ãããã©ã¼ã </h1>
+      <p>å£ã³ãã®ææåæã»èªåè¦ç´ã»è¿ä¿¡ãã³ãã¬ã¼ãçæã<br>ä¸­å°äºæ¥­èã®å£ã³ãç®¡çããAIã24æéãµãã¼ããã¾ãã</p>
+      <div class="hero-buttons">
+        <a href="https://buy.stripe.com/aFaaEQ1vCg8gb05e5SaVa00" class="btn-primary">æé¡1,980åã§å§ãã â</a>
+        <a href="#features" class="btn-secondary">æ©è½ãè¦ã</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">3ç§</div><div class="stat-label">AIåæéåº¦</div></div>
+        <div class="stat"><div class="stat-num">50ä»¶</div><div class="stat-label">ä¸æ¬ãããå¦ç</div></div>
+        <div class="stat"><div class="stat-num">Â¥0.01</div><div class="stat-label">1ä»¶ãããã³ã¹ã</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pain Points -->
+<section class="pain">
+  <div class="container">
+    <h2 class="section-title">ãããªãæ©ã¿ããã¾ãããï¼</h2>
+    <p class="section-sub">å£ã³ãç®¡çã«æéãããã¦ãã¾ããã</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">ð</div>
+        <h3>å£ã³ãã®ç¢ºèªã»è¿ä¿¡ã«æ¯æ¥30åä»¥ä¸</h3>
+        <p>Googleãé£ã¹ã­ã°ãããããããã¼... è¤æ°ãµã¤ãã®å£ã³ããã§ãã¯ãå¤§å¤</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">ð</div>
+        <h3>ãã¬ãã£ãå£ã³ãã¸ã®å¯¾å¿ãéãã</h3>
+        <p>æ°ã¥ããæã«ã¯æ¢ã«ä»ã®ãå®¢æ§ã«è¦ãããæ¥åºçã«å½±é¿ãåºã¦ãã</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">ð¤·</div>
+        <h3>è¯ãå£ã³ããæ´»ããã¦ããªã</h3>
+        <p>ãã£ããã®å¥½æçãªå£ã³ããããã¼ã±ãã£ã³ã°ã«æå¹æ´»ç¨ã§ãã¦ããªã</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features">
+  <div class="container">
+    <h2 class="section-title">VoiceWallã®3ã¤ã®AIæ©è½</h2>
+    <p class="section-sub">ææ°AIãå£ã³ããèªååæã»æ´»ç¨ãã¾ã</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-num">1</div>
+        <h3>å£ã³ãèªåè¦ç´ã»ææåæ</h3>
+        <p>å£ã³ããæç¿ãããã¨å³åº§ã«AIãåæããã¸ãã£ã/ãã¬ãã£ã/ä¸­ç«ãèªåå¤å®ããå°å¥äºä¾é¢¡ã®è¦ç´ãçæãã¾ãã</p>
+        <span class="feature-tag tag-gemini">Gemini Flash-Lite æ­è¼</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">2</div>
+        <h3>ã¯ã³ã¯ãªãã¯è¿ä¿¡çæ</h3>
+        <p>å£ã³ãã®åå®¹ã¨ææã«åããã¦ããã©ã¼ãã«ã»ã«ã¸ã¥ã¢ã«ã»æè¬éè¦ã®3ãã¿ã¼ã³ã®è¿ä¿¡ãã³ãã¬ã¼ããèªåçæã</p>
+        <span class="feature-tag tag-gpt">GPT-4.1 æ­è¼</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">3</div>
+        <h3>ãããä¸æ¬åæ</h3>
+        <p>æªåæã®å£ã³ããæå¤§50ä»¶ã¾ã¨ãã¦AIå¦çãèç©ãããå£ã³ããä¸æ°ã«åæã§ãã¾ãã</p>
+        <span class="feature-tag tag-gemini">Gemini Flash-Lite æ­è¼</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section style="background:var(--light)">
+  <div class="container">
+    <h2 class="section-title">å°å¥ã¯3ã¹ããã</h2>
+    <p class="section-sub">æç­5åã§å©ç¨éå§</p>
+    <div class="how-steps">
+      <div>
+        <div class="step-num">1</div>
+        <h3>ãã©ã³ãé¸æ</h3>
+        <p>Starter or Proãã©ã³ãé¸ãã§ããæ¯æãæå ±ãå¥å</p>
+      </div>
+      <div>
+        <div class="step-num">2</div>
+        <h3>å£ã³ããç»é²</h3>
+        <p>æ¢å­ã®å£ã³ããCSVã¢ããã­ã¼ããã¾ãã¯APIã§èªåé£æº</p>
+      </div>
+      <div>
+        <div class="step-num">3</div>
+        <h3>AIãèªååæ</h3>
+        <p>ææåæã»è¦ç´ã»ã­ã¼ã¯ã¼ãæ½åºãå³åº§ã«ã¹ã¿ã¼ã</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <h2 class="section-title">æéãã©ã³</h2>
+    <p class="section-sub">åæè²»ç¨0åããã¤ã§ãã­ã£ã³ã»ã«å¯è½ã</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Starter</div>
+        <div class="price-amount">Â¥1,980<span>/æ</span></div>
+        <p class="price-desc">å°è¦æ¨¡åºèã»åäººäºæ¥­ä¸»åã</p>
+        <ul class="price-features">
+          <li>æ100ä»¶ã¾ã§å£ã³ãåæ</li>
+          <li>ææåæï¼ãã¸/ãã¬/ä¸­ç«ï¼</li>
+          <li>ã­ã¼ã¯ã¼ãèªåæ½åº</li>
+          <li>è¿ä¿¡ãã³ãã¬ã¼ãçæ</li>
+          <li>CSVã¨ã¯ã¹ãã¼ã</li>
+        </ul>
+        <a href="https://buy.stripe.com/aFaaEQ1vCg8gb05e5SaVa00" class="price-btn price-btn-outline">Starterã§å§ãã</a>
+      </div>
+      <div class="price-card popular">
+        <div class="popular-badge">ãããã</div>
+        <div class="price-name">Pro</div>
+        <div class="price-amount">Â¥4,980<span>/æ</span></div>
+        <p class="price-desc">è¤æ°åºèã»æé·ä¸­ãã¸ãã¹åã</p>
+        <ul class="price-features">
+          <li>æ500ä»¶ã¾ã§å£ã³ãåæ</li>
+          <li>Starterå¨æ©è½</li>
+          <li>ãããä¸æ¬åæï¼50ä»¶/åï¼</li>
+          <li>å°å¥äºä¾èªåçæ</li>
+          <li>APIé£æº</li>
+          <li>åªåãµãã¼ã</li>
+        </ul>
+        <a href="https://buy.stripe.com/aFa28k1vC4py3xDge0aVa01" class="price-btn price-btn-primary">Proã§å§ãã â</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">ããããè³ªå</h2>
+    <p class="section-sub"></p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          ã©ã®ãããªå£ã³ããµã¤ãã«å¯¾å¿ãã¦ãã¾ããï¼
+          <span class="faq-arrow">â¼</span>
+        </div>
+        <div class="faq-a">ç¾å¨ã¯CSVã¢ããã­ã¼ãã¨APIé£æºã«å¯¾å¿ãã¦ãã¾ããGoogleå£ã³ããé£ã¹ã­ã°ãããããããã¼ç­ããã¨ã¯ã¹ãã¼ãããå£ã³ããã¼ã¿ãåæã§ãã¾ããä»å¾ãåãã©ãããã©ã¼ã ã¨ã®ç´æ¥é£æºãäºå®ãã¦ãã¾ãã</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          AIã®åæç²¾åº¦ã¯ã©ã®ãããã§ããï¼
+          <span class="faq-arrow">â¼</span>
+        </div>
+        <div class="faq-a">Google Gemini Flash-Liteã¨GPT-4.1ãæ´»ç¨ãã¦ãããææåæã®ç²¾åº¦ã¯ç´90%ä»¥ä¸ã§ããååæçµæã«ã¯ä¿¡é ¼åº¦ã¹ã³ã¢ï¼0ã1.0ï¼ãä»ä¸ããããããç¢ºåº¦ã®ä½ãçµæã¯äººéãç¢ºèªã§ãã¾ãã</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          è§£ç´ã¯ãã¤ã§ãã§ãã¾ããï¼
+          <span class="faq-arrow">â¼</span>
+        </div>
+        <div class="faq-a">ã¯ãããã¤ã§ãè§£ç´å¯è½ã§ããè§£ç´å¾ãå½ææ«ã¾ã§ã¯ãµã¼ãã¹ããå©ç¨ããã ãã¾ããé·æå¥ç´ã®ç¸ãã¯ããã¾ããã</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          ãã¼ã¿ã®ã»ã­ã¥ãªãã£ã¯å¤§ä¸å¤«ã§ããï¼
+          <span class="faq-arrow">â¼</span>
+        </div>
+        <div class="faq-a">å¨ãã¼ã¿ã¯Supabaseï¼AWSæ±äº¬ãªã¼ã¸ã§ã³ï¼ã«æå·åä¿å­ããã¾ããRow Level Securityï¼RLSï¼ã«ããããã­ã¸ã§ã¯ããªã¼ãã¼ä»¥å¤ã¯ãã¼ã¿ã«ã¢ã¯ã»ã¹ã§ãã¾ããã</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>å£ã³ãã®åã§ããã¸ãã¹ãå éããã</h2>
+    <p>æé¡1,980åãããä»ããAIå£ã³ãåæãå§ãã¾ãããã</p>
+    <a href="https://buy.stripe.com/aFaaEQ1vCg8gb05e5SaVa00" class="btn-white">ç¡æã§å§ãã â</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom:8px"><strong style="color:#e2e8f0">VoiceWall</strong> by Mild Solt</p>
+    <p>&copy; 2026 Mild Solt. All rights reserved. | <a href="mailto:m.kanasugi0000ffxiv@gmail.com">ãåãåãã</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
